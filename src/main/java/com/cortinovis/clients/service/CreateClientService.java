@@ -15,8 +15,10 @@ public class CreateClientService {
     this.clientRepository = clientRepository;
   }
 
-  public Client createClient(Client client) {
+  public Client createClient(Client client) throws InvalidClientException {
     List<Client> clients = clientRepository.readClients();
+
+    validateClient(client);
 
     Long nextId = clients.stream()
             .mapToLong(Client::getId)
@@ -30,9 +32,8 @@ public class CreateClientService {
     return client;
   }
 
-  public void validateClient(Client client) throws InvalidClientException {
+  private void validateClient(Client client) throws InvalidClientException {
 
-    String phone = client.getPhone().replaceAll("\\D", "" );
 
     if(client.getName() == null || client.getName().isBlank()) {
       throw new InvalidClientException("Client name must not be null");
@@ -49,6 +50,8 @@ public class CreateClientService {
     if(client.getPhone() == null || client.getPhone().isBlank()) {
       throw new InvalidClientException("Client phone must not be null");
     }
+
+    String phone = client.getPhone().replaceAll("\\D", "" );
 
     if (phone.length() != 10 && phone.length() != 11) {
       throw new InvalidClientException("Invalid phone");

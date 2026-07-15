@@ -2,6 +2,7 @@ package com.cortinovis.clients.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -41,5 +42,14 @@ public class GlobalExceptionHandler {
     return ResponseEntity
             .status(HttpStatus.NOT_FOUND)
             .body("Endpoint not found");
+  }
+
+  @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+  public ResponseEntity<String> handleMethodNotAllowed(
+          HttpRequestMethodNotSupportedException ex) {
+
+    return ResponseEntity
+            .status(HttpStatus.METHOD_NOT_ALLOWED)
+            .body("HTTP method not allowed");
   }
 }

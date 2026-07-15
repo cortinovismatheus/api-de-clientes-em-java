@@ -15,7 +15,7 @@ public class RemoveClientService {
     this.clientRepository = clientRepository;
   }
 
-  public List<Client> removeClient(Long id) throws InvalidClientException {
+  public void removeClient(Long id) throws InvalidClientException {
     List<Client> clients = clientRepository.readClients();
 
     boolean removed = clients.removeIf(client ->
@@ -25,7 +25,6 @@ public class RemoveClientService {
       throw new InvalidClientException("Client not found");
     }
 
-    clientRepository.saveClients((List<Client>) clients);
-    return clients;
+    clientRepository.saveClients(clients);
   }
 }

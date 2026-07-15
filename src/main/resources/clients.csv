@@ -1,15 +1,3 @@
 id,name,email,phone,socialMedia,active
-2,homem aranha,aranha@gmail.com,(44) 98804-0921,null,false
-3,homem aranha,aranha@gmail.com,(44) 98804-0921,null,false
-4,homem aranha,aranha@gmail.com,(44) 98804-0921,@cortinovis,false
-5,null,aranha@gmail.com,(44) 98804-0921,@cortinovis,false
-6,null,aranha@gmail.com,(44) 98804-0921,@cortinovis,false
-7,homem aranha,aranhagmail.com,(44) 98804-0921,@cortinovis,false
-8,homem aranha,aranha@gmail.com,(44) 98804-0921,@cortinovis,false
-9,homem aranha,aranha@gmail.com,(44) 8804-0921,@cortinovis,false
-10,homem aranha,aranha@gmail.com,(44) 804-0921,@cortinovis,false
-11,homem aranha,aranha@gmail.com,(44) 98804-0921,@cortinovis,false
-12,homem aranha,aranha@gmail.com,(44) 984-0921,@cortinovis,false
-13,homem aranha,aranha@gmail.com,(44) 984-0921,@cortinovis,false
-14,homem aranha,aranha@gmail.com,(44) 984-0921,@cortinovis,false
-15,homem aranha,aranha@gmail.com,(44) 984-0921,@cortinovis,false
+4,homem aranha,aranha@gmail.com,(44) 98804-0921,@cortinovis,true
+5,homem aranha,aranha@gmail.com,(44) 98804-0921,@cortinovis,false
