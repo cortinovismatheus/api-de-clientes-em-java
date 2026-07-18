@@ -5,8 +5,6 @@ import com.cortinovis.clients.model.Client;
 import com.cortinovis.clients.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class CreateClientService {
   private final ClientRepository clientRepository;
@@ -16,20 +14,9 @@ public class CreateClientService {
   }
 
   public Client createClient(Client client) throws InvalidClientException {
-    List<Client> clients = clientRepository.readClients();
-
     validateClient(client);
 
-    Long nextId = clients.stream()
-            .mapToLong(Client::getId)
-            .max()
-            .orElse(0) + 1;
-
-    client.setId(nextId);
-
-    clientRepository.saveClient(client);
-
-    return client;
+    return clientRepository.save(client);
   }
 
   private void validateClient(Client client) throws InvalidClientException {

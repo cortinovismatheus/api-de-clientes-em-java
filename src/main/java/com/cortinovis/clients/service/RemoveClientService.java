@@ -15,16 +15,12 @@ public class RemoveClientService {
     this.clientRepository = clientRepository;
   }
 
-  public void removeClient(Long id) throws InvalidClientException {
-    List<Client> clients = clientRepository.readClients();
+  public void removeClient(Long id) throws InvalidClientException{
 
-    boolean removed = clients.removeIf(client ->
-            client.getId().equals(id));
-
-    if (!removed) {
-      throw new InvalidClientException("Client not found");
+    if(!clientRepository.existsById(id)){
+      throw new InvalidClientException("Client with id " + id + " does not exist");
     }
 
-    clientRepository.saveClients(clients);
+    clientRepository.deleteById(id);
   }
 }

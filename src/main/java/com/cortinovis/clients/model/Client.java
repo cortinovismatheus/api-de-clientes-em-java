@@ -1,13 +1,32 @@
 package com.cortinovis.clients.model;
 
+
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "clients")
 public class Client {
 
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
+
+  @Column(nullable = false)
   private String name;
+
+  @Column(nullable = false, unique = true)
   private String email;
+
+  @Column(nullable = false)
   private String phone;
+
+  @Column(name = "social_media" ,nullable = false)
   private String socialMedia;
+
+  @Column(nullable = false)
   private Boolean active;
+
+  public  Client() {}
 
   public Client (Long id, String name, String email, String phone, String socialMedia, Boolean active) {
     this.id = id;

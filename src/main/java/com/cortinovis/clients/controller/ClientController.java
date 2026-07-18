@@ -6,7 +6,6 @@ import com.cortinovis.clients.service.CreateClientService;
 import com.cortinovis.clients.service.GetClientsService;
 import com.cortinovis.clients.service.RemoveClientService;
 import com.cortinovis.clients.service.UpdateClientService;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
