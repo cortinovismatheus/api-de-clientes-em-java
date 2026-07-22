@@ -5,6 +5,8 @@ import com.cortinovis.clients.model.Client;
 import com.cortinovis.clients.repository.ClientRepository;
 import org.springframework.stereotype.Service;
 
+import javax.xml.validation.Validator;
+
 @Service
 public class UpdateClientService {
 
@@ -40,7 +42,20 @@ public class UpdateClientService {
       currentClient.setSocialMedia(client.getSocialMedia());
     }
 
+    Validations(client);
+
 
     return clientRepository.save(currentClient);
+  }
+
+  private void Validations(Client client) throws InvalidClientException {
+    if (client.getEmail() != null && !client.getEmail().contains("@")) {
+      throw new InvalidClientException("Invalid email");
+    }
+
+    if (client.getPhone() != null &&
+            client.getPhone().replaceAll("\\D", "").length() != 11) {
+      throw new InvalidClientException("Invalid phone");
+    }
   }
 }
